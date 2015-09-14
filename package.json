@@ -1,0 +1,23 @@
+{
+  "name": "climb-sa-test",
+  "version": "1.0.0",
+  "description": "Climbing Self-Assessment Test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/martinov/climb-sa-test.git"
+  },
+  "keywords": [
+    "climbing",
+    "self-assessment"
+  ],
+  "author": "Martin Martinov @mmartinov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martinov/climb-sa-test/issues"
+  },
+  "homepage": "https://github.com/martinov/climb-sa-test#readme"
+}
