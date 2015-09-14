@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/martinov/climb-sa-test/issues"
   },
-  "homepage": "https://github.com/martinov/climb-sa-test#readme"
+  "homepage": "https://github.com/martinov/climb-sa-test#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.7",
+    "morgan": "^1.6.1"
+  }
 }

@@ -25,3 +25,6 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+# Config file, copy config.sample.js to config.js and add db credentials, etc.
+config.js
