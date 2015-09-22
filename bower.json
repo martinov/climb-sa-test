@@ -1,0 +1,26 @@
+{
+  "name": "climb-sa-test",
+  "version": "1.0.0",
+  "homepage": "https://github.com/martinov/climb-sa-test",
+  "authors": [
+    "Martin Martinov <martin@mmartinov.com>"
+  ],
+  "description": "Climbing Self-Assessment Test",
+  "main": "public/app/views/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/assets/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-aria": "~1.4.5",
+    "angular-material": "~0.11.0",
+    "angular-route": "~1.4.5"
+  }
+}

@@ -28,3 +28,6 @@ node_modules
 
 # Config file, copy config.sample.js to config.js and add db credentials, etc.
 config.js
+
+# Managed by Bower
+public/assets/libs
