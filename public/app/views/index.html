@@ -35,17 +35,19 @@
           Close Sidenav Left
         </md-button>
         <p hide-md show-gt-sm>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
+          This sidenav is locked open on your device.
+					To go back to the default behavior, narrow your display.
         </p>
 				<div ng-if="main.loggedIn">
 			    <ul>
-			      <li><a href="/users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+			      <li><a ui-sref="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 			    </ul>
 			  </div>
 		    <ul>
-		      <li><a href="/">Home</a></li>
-		      <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+		      <li><a ui-sref="home">Home</a></li>
+					<li><a ui-sref="test">Take the test</a></li>
+			    <li><a ui-sref="result" class="md-raised md-accent">See Results</a></li>
+		      <li ng-if="!main.loggedIn"><a ui-sref="login">Login</a></li>
 		      <li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.username }}!</li>
 		      <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
 		    </ul>
@@ -53,7 +55,7 @@
     </md-sidenav>
 
 		<md-content flex layout-padding>
-      <div layout="column" layout-fill layout-align="top center" ng-view></div>
+      <div layout="column" layout-fill layout-align="top center" ui-view></div>
       <div flex></div>
     </md-content>
 
@@ -61,10 +63,12 @@
 
 	<!-- JS -->
 	<script src="/assets/libs/angular/angular.js"></script>
-	<script src="/assets/libs/angular-route/angular-route.min.js"></script> <!-- to be replaced with ui-router -->
+	<script src="/assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/assets/libs/angular-animate/angular-animate.min.js"></script>
 	<script src="/assets/libs/angular-aria/angular-aria.min.js"></script>
 	<script src="/assets/libs/angular-material/angular-material.min.js"></script>
+	<script src="/assets/libs/Chart.js/Chart.js"></script>
+	<script src="/assets/libs/angular-chart.js/dist/angular-chart.js"></script>
 
 	<!-- controllers -->
 	<script src="app/controllers/mainCtrl.js"></script>
@@ -76,7 +80,7 @@
 	<script src="app/services/userService.js"></script>
 
 	<!-- main Angular app files -->
-	<script src="app/app.routes.js"></script>
+	<script src="app/app.ui.routes.js"></script>
 	<script src="app/app.js"></script>
 </body>
 </html>
