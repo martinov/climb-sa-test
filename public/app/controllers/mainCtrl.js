@@ -1,6 +1,12 @@
 angular.module('mainCtrl', [])
 
-.controller('mainController', function($rootScope, $location, Auth) {
+.controller('mainController', function(
+	$rootScope,
+	$location,
+	Auth,
+	$mdUtil,
+	$mdSidenav,
+	$log) {
 
 	var vm = this;
 
@@ -9,14 +15,14 @@ angular.module('mainCtrl', [])
 
 	// check to see if a user is logged in on every request
 	$rootScope.$on('$routeChangeStart', function() {
-		vm.loggedIn = Auth.isLoggedIn();	
+		vm.loggedIn = Auth.isLoggedIn();
 
 		// get user information on page load
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
-			});	
-	});	
+			});
+	});
 
 	// function to handle login form
 	vm.doLogin = function() {
@@ -27,14 +33,14 @@ angular.module('mainCtrl', [])
 
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.success(function(data) {
-				vm.processing = false;			
+				vm.processing = false;
 
 				// if a user successfully logs in, redirect to users page
-				if (data.success)			
+				if (data.success)
 					$location.path('/users');
-				else 
+				else
 					vm.error = data.message;
-				
+
 			});
 	};
 
@@ -42,12 +48,28 @@ angular.module('mainCtrl', [])
 	vm.doLogout = function() {
 		Auth.logout();
 		vm.user = '';
-		
+
 		$location.path('/login');
 	};
 
 	vm.createSample = function() {
 		Auth.createSampleUser();
 	};
+
+	vm.toggleLeft = buildToggler('left');
+  /**
+   * Build handler to open/close a SideNav; when animation finishes
+   * report completion in console
+   */
+  function buildToggler(navID) {
+    var debounceFn = $mdUtil.debounce(function() {
+			$mdSidenav(navID)
+        .toggle()
+				.then(function () {
+          $log.debug("toggle " + navID + " is done");
+        });
+    }, 200);
+    return debounceFn;
+  }
 
 });

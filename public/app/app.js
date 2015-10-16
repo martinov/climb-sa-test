@@ -1,17 +1,28 @@
 angular
-	.module(
-		'userApp',
-		['ngAnimate', 'ngMaterial', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService']
-	)
+	.module('climbSATestApp', [
+		'ngAnimate',
+		'ngMaterial',
+		'app.routes',
+		'authService',
+		'mainCtrl',
+		'navCtrl',
+		'userCtrl',
+		'userService'
+	])
 
 	// application configuration to integrate token into requests
-	.config(function($httpProvider, $mdThemingProvider) {
+	.config(function($httpProvider, $mdThemingProvider, $mdIconProvider) {
 
-		// attach our auth interceptor to the http requests
-		$httpProvider.interceptors.push('AuthInterceptor');
+    // attach our auth interceptor to the http requests
+    $httpProvider.interceptors.push('AuthInterceptor');
 
+		$mdIconProvider
+		//.defaultIconSet("./assets/svg/avatars.svg", 128)
+		.icon("menu", "./assets/svg/menu.svg", 24);
+
+		// change some theming options
 		$mdThemingProvider.theme('default')
       .primaryPalette('lime')
-      .accentPalette('light-green');
+      .accentPalette('amber');
 
 	});

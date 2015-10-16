@@ -1,13 +1,44 @@
-<div class="jumbotron text-center">
-	<h1>Welcome to the User CRM!</h1>
+<md-card>
+  <!-- img ng-src="{{imagePath}}" class="md-card-image" alt="Black Church" -->
+  <md-card-content>
+    <h2 class="md-title">Climbing Performance Test</h2>
+    <p>
+      We have sourced a really good self assessment test to work out your key
+			strengths and weaknesses (check out Eric J. Hörst's book
+			<a href="http://www.trainingforclimbing.com/" target="_blank">Training for Climbing</a>).
+			It's good to take stock especially if your performance has plateaued.
+    </p>
+    <p>
+      Add up each category to attain three totals. If all three areas are
+			within five points of each other you are a well-balanced climber but,
+			more commonly, you will have one that is much lower scoring than the
+			others. This is your major weakness. Review each question of
+			the self-assessment test and mark a star next to those on which you
+			scored a three or less.
+    </p>
+    <p>
+      Each of these low scoring questions identifies a specific element of your
+			climbing performance that is holding you back. Focus on your most
+			dramatic weaknesses (5-6 lowest scoring items). Work out an action plan
+			then once you begin to see improvement shift your focus onto other low
+			scoring areas of the assessment. Re-take the test if needs be.
+    </p>
+		<p>
+			<a href="http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test" target="_blank">Blog Post</a>
+		</p>
+  </md-card-content>
+  <div class="md-actions" layout="row" layout-align="end center">
+    <md-button ui-sref="test" class="md-raised md-primary">Take the test</md-button>
+    <md-button ui-sref="result" class="md-raised md-accent">See Results</md-button>
+  </div>
+</md-card>
 
-	<div ng-if="!main.loggedIn">
-		<p>Login to see manage your users.</p>
-		<a href="/login" class="btn btn-primary">Login</a>
-	</div>
+<div ng-if="!main.loggedIn">
+	<p>Login to see manage your users.</p>
+	<md-button href="/login" class="md-primary md-raised" aria-label="Login">Login</md-button>
+</div>
 
-	<div ng-if="main.loggedIn">
-		<p>Manage your users.</p>
-		<a href="/users" class="btn btn-primary">View Users</a>
-	</div>
+<div ng-if="main.loggedIn">
+	<p>Manage your users.</p>
+	<a href="/users" class="btn btn-primary">View Users</a>
 </div>
