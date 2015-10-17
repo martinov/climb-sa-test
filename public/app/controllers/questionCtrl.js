@@ -2,6 +2,9 @@ angular.module('questionCtrl', ['questionService'])
 
 .controller('questionController', function(TestQuestions, $log) {
   var vm = this;
+  vm.currentNum = 1;
+  vm.totalNum = 0;
+  vm.question = {};
 
   // set a processing variable to show loading things
 	vm.processing = true;
@@ -16,6 +19,8 @@ angular.module('questionCtrl', ['questionService'])
 			// bind the questions that come back to vm.questions
 			vm.questions = data;
       //$log.debug(data);
+      vm.totalNum = data.length;
+      vm.question = vm.questions[vm.currentNum - 1];
 		});
 
   /*
@@ -45,11 +50,13 @@ angular.module('questionCtrl', ['questionService'])
   };
 
   vm.nextQuestion = function() {
-    alert('hello next');
+    if (vm.currentNum < vm.questions.length) vm.currentNum++;
+    vm.question = vm.questions[vm.currentNum - 1];
   };
 
   vm.prevQuestion = function() {
-    alert('hello prev');
+    if (vm.currentNum > 1) vm.currentNum--;
+    vm.question = vm.questions[vm.currentNum - 1];
   };
 
 });

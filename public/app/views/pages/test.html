@@ -1,13 +1,13 @@
 <form ng-submit="test.submit()">
 
-<md-card ng-repeat="q in test.questions">
+<md-card>
 
   <md-card-content>
-    <h5>Question {{ q.num }} of {{ test.questions.length }}</h5>
+    <h5>Question {{ test.currentNum }} of {{ test.totalNum }}</h5>
     <hr>
-    <h2 class="md-title">{{ q.question }}</h2>
+    <h2 class="md-title">{{ test.question.question }}</h2>
 
-      <md-radio-group ng-model="q.answer">
+      <md-radio-group ng-model="test.question.answer">
         <md-radio-button ng-repeat="a in test.answers" value="{{ a.value }}"
           class="md-primary">{{ a.label }}</md-radio-button>
       </md-radio-group>
@@ -16,12 +16,12 @@
 
   <div layout="row" class="md-actions md-padding" layout-align="space-between center">
     <md-button class="md-raised" ng-click="test.prevQuestion()" type="button"
-      ng-hide="{{ q.num == 1 }}">Previous</md-button>
-    <p>Selected: <span class="radioValue">{{ q.answer }}</span></p>
+      ng-hide="test.currentNum == 1">Previous</md-button>
+    <p>Selected: <span class="radioValue">{{ test.question.answer }}</span></p>
     <md-button class="md-raised md-primary" ng-click="test.nextQuestion()"
-      type="button" ng-hide="{{ q.num == test.questions.length }}">Next</md-button>
+      type="button" ng-hide="test.currentNum == test.totalNum">Next</md-button>
     <md-button class="md-raised md-accent" type="submit"
-      ng-show="{{ q.num == test.questions.length }}">Submit</md-button>
+      ng-show="test.currentNum == test.totalNum">Submit</md-button>
   </div>
 
 </md-card>
