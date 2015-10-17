@@ -15,7 +15,9 @@ angular.module('app.ui.routes', ['ui.router'])
 
 		.state('test', {
 			url: '/test',
-			templateUrl: 'app/views/pages/test.html'
+			templateUrl: 'app/views/pages/test.html',
+			controller: 'questionController',
+			controllerAs: 'test'
 		})
 
 		.state('result', {

@@ -13,7 +13,7 @@
 	<!-- CSS  -->
 	<!-- load animate.css from CDN and custom CSS -->
 	<!--link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css"-->
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body ng-app="climbSATestApp" ng-controller="mainController as main" layout="column">
 
@@ -54,10 +54,9 @@
       </md-content>
     </md-sidenav>
 
-		<md-content flex layout-padding>
-      <div layout="column" layout-fill layout-align="top center" ui-view></div>
-      <div flex></div>
-    </md-content>
+    <div layout="column" layout-fill layout-align="top center">
+			<md-content flex layout-padding ui-view></md-content>
+		</div>
 
 	</section>
 
@@ -74,10 +73,12 @@
 	<script src="app/controllers/mainCtrl.js"></script>
 	<script src="app/controllers/navCtrl.js"></script>
 	<script src="app/controllers/userCtrl.js"></script>
+	<script src="app/controllers/questionCtrl.js"></script>
 
 	<!-- services -->
 	<script src="app/services/authService.js"></script>
 	<script src="app/services/userService.js"></script>
+	<script src="app/services/questionService.js"></script>
 
 	<!-- main Angular app files -->
 	<script src="app/app.ui.routes.js"></script>

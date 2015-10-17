@@ -1,20 +1,29 @@
-<md-card ng-controller="QuestionCtrl">
+<form ng-submit="test.submit()">
+
+<md-card ng-repeat="q in test.questions">
+
   <md-card-content>
-    <h5>Question {{ question.num }} of {{ question.total }}</h5>
+    <h5>Question {{ q.num }} of {{ test.questions.length }}</h5>
     <hr>
-    <h2 class="md-title">{{ question.title }}</h2>
-    <form ng-submit="submit()">
-      <md-radio-group ng-model="data.group1">
-        <md-radio-button ng-repeat="a in question.answers" value="{{ a.value }}"
+    <h2 class="md-title">{{ q.question }}</h2>
+
+      <md-radio-group ng-model="q.answer">
+        <md-radio-button ng-repeat="a in test.answers" value="{{ a.value }}"
           class="md-primary">{{ a.label }}</md-radio-button>
       </md-radio-group>
-      <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span></p>
-    </form>
+
   </md-card-content>
-  <div layout="row" class="md-actions md-padding">
-    <div flex layout="row" layout-align="space-between center">
-      <md-button class="md-raised" ng-click="prevQuestion()" type="button">Previous</md-button>
-      <md-button class="md-raised md-primary" ng-click="nextQuestion()" type="button">Next</md-button>
-    </div>
+
+  <div layout="row" class="md-actions md-padding" layout-align="space-between center">
+    <md-button class="md-raised" ng-click="test.prevQuestion()" type="button"
+      ng-hide="{{ q.num == 1 }}">Previous</md-button>
+    <p>Selected: <span class="radioValue">{{ q.answer }}</span></p>
+    <md-button class="md-raised md-primary" ng-click="test.nextQuestion()"
+      type="button" ng-hide="{{ q.num == test.questions.length }}">Next</md-button>
+    <md-button class="md-raised md-accent" type="submit"
+      ng-show="{{ q.num == test.questions.length }}">Submit</md-button>
   </div>
+
 </md-card>
+
+</form>
