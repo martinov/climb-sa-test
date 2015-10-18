@@ -1,4 +1,8 @@
-md-card-content h5 {
+#sa-form {
+	width: 100%;
+}
+
+#sa-form md-card-content h5 {
 	margin: 0px;
 }
 
