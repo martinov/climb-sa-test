@@ -26,19 +26,19 @@
 		<p>
 			<a href="http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test" target="_blank">Blog Post</a>
 		</p>
+
+    <div ng-if="!main.loggedIn">
+    	<p>Login to see manage your users.</p>
+    	<md-button ui-sref="login" class="md-primary md-raised" aria-label="Login">Login</md-button>
+    </div>
+
+    <div ng-if="main.loggedIn">
+    	<p>Manage your users.</p>
+    	<md-button ui-sref="users" class="md-primary md-raised">View Users</md-button>
+    </div>
   </md-card-content>
-  <div class="md-actions" layout="row" layout-align="end center">
+  <div class="md-actions md-padding" layout="row" layout-align="end center">
     <md-button ui-sref="test" class="md-raised md-primary" aria-label="Take the test">Take the test</md-button>
     <md-button ui-sref="result" class="md-raised md-accent" aria-label="See results">See Results</md-button>
   </div>
 </md-card>
-
-<div ng-if="!main.loggedIn">
-	<p>Login to see manage your users.</p>
-	<md-button ui-sref="login" class="md-primary md-raised" aria-label="Login">Login</md-button>
-</div>
-
-<div ng-if="main.loggedIn">
-	<p>Manage your users.</p>
-	<a ui-sref="users" class="btn btn-primary">View Users</a>
-</div>
