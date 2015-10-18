@@ -1,44 +1,43 @@
-<md-card>
-  <!-- img ng-src="{{imagePath}}" class="md-card-image" alt="Black Church" -->
-  <md-card-content>
-    <h2 class="md-title">Climbing Performance Test</h2>
-    <p>
-      This is a really good self assessment test to work out your key strengths
-      and weaknesses (check out Eric J. Hörst's book
-			<a href="http://www.trainingforclimbing.com/" target="_blank">Training for Climbing</a>).
-			It's good to take stock especially if your performance has plateaued.
-    </p>
-    <p>
-      After you answer all the questions, we'll add up each category to attain
-      three totals. If all three areas are within five points of each other you
-      are a well-balanced climber but, more commonly, you will have one that is
-      much lower scoring than the others. This is your major weakness. Review
-      each question of the self-assessment test and mark a star next to those
-      on which you scored a three or less.
-    </p>
-    <p>
-      Each of these low scoring questions identifies a specific element of your
-			climbing performance that is holding you back. Focus on your most
-			dramatic weaknesses (5-6 lowest scoring items). Work out an action plan
-			then once you begin to see improvement shift your focus onto other low
-			scoring areas of the assessment. Re-take the test if needs be.
-    </p>
-		<p>
-			<a href="http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test" target="_blank">Blog Post</a>
-		</p>
+<div class="md-padding">
+  <h2 class="md-title">Climbing Performance Test</h2>
+  <p>
+    This is a really good self assessment test to work out your key strengths
+    and weaknesses (check out Eric J. Hörst's book
+		<a href="http://www.trainingforclimbing.com/" target="_blank">Training for Climbing</a>).
+		It's good to take stock especially if your performance has plateaued.
+  </p>
+  <img ng-src="{{imagePath}}" alt="Black Church" hide show-gt-sm>
+  <p>
+    After you answer all the questions, we'll add up each category to attain
+    three totals. If all three areas are within five points of each other you
+    are a well-balanced climber but, more commonly, you will have one that is
+    much lower scoring than the others. This is your major weakness. Review
+    each question of the self-assessment test and mark a star next to those
+    on which you scored a three or less.
+  </p>
+  <p>
+    Each of these low scoring questions identifies a specific element of your
+		climbing performance that is holding you back. Focus on your most
+		dramatic weaknesses (5-6 lowest scoring items). Work out an action plan
+		then once you begin to see improvement shift your focus onto other low
+		scoring areas of the assessment. Re-take the test if needs be.
+  </p>
+	<p>
+		<a href="http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test" target="_blank">Blog Post</a>
+	</p>
 
-    <div ng-if="!main.loggedIn">
-    	<p>Login to see manage your users.</p>
-    	<md-button ui-sref="login" class="md-primary md-raised" aria-label="Login">Login</md-button>
-    </div>
+  <div ng-if="!main.loggedIn" class="md-padding md-whiteframe-2dp">
+  	<p>Login to see manage your users.</p>
+  	<md-button ui-sref="login" class="md-primary md-raised" aria-label="Login">Login</md-button>
+  </div>
 
-    <div ng-if="main.loggedIn">
-    	<p>Manage your users.</p>
-    	<md-button ui-sref="users" class="md-primary md-raised">View Users</md-button>
-    </div>
-  </md-card-content>
-  <div class="md-actions md-padding" layout="row" layout-align="end center">
+  <div ng-if="main.loggedIn" class="md-padding md-whiteframe-2dp">
+  	<p>Manage your users.</p>
+  	<md-button ui-sref="users" class="md-primary md-raised">View Users</md-button>
+  </div>
+
+  <div class="md-actions" layout="row" layout-align="end center">
     <md-button ui-sref="test" class="md-raised md-primary" aria-label="Take the test">Take the test</md-button>
     <md-button ui-sref="result" class="md-raised md-accent" aria-label="See results">See Results</md-button>
   </div>
-</md-card>
+</div>

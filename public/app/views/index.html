@@ -31,35 +31,39 @@
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2"
 			md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
       <md-content layout-padding ng-controller="LeftCtrl">
-				<div ng-if="main.loggedIn">
-					Hello {{ main.user.username }}!
+
+				<div ng-if="main.loggedIn" class="md-padding md-whiteframe-2dp">
+					Hello {{ main.user.name }}!
+					<p hide show-gt-sm>
+	          This sidenav is locked open on your device.
+	        </p>
 			  </div>
-		    <ul>
-		      <li>
+
+				<md-list>
+  				<md-list-item>
 						<md-button ui-sref="home"><md-icon md-svg-icon="home"></md-icon> Instructions</md-button>
-					</li>
-					<li>
+					</md-list-item>
+					<md-list-item>
 						<md-button ui-sref="test"><md-icon md-svg-icon="assignment"></md-icon> Take the test</md-button>
-					</li>
-			    <li>
+					</md-list-item>
+			    <md-list-item>
 						<md-button ui-sref="result"><md-icon md-svg-icon="assessment"></md-icon> Results</md-button>
-					</li>
-					<li>
+					</md-list-item>
+					<md-list-item>
 						<md-button ui-sref="users"><md-icon md-svg-icon="account-box"></md-icon> Users</md-button>
-					</li>
-		      <li ng-if="!main.loggedIn">
+					</md-list-item>
+		      <md-list-item ng-if="!main.loggedIn">
 						<md-button ui-sref="login"><md-icon md-svg-icon="account-box"></md-icon> Login</md-button>
-					</li>
-		      <li ng-if="main.loggedIn">
+					</md-list-item>
+		      <md-list-item ng-if="main.loggedIn">
 						<md-button href="#" ng-click="main.doLogout()"><md-icon md-svg-icon="close"></md-icon> Logout</md-button>
-					</li>
-		    </ul>
+					</md-list-item>
+		    </md-list>
+
 				<md-button ng-click="close()" class="md-primary md-raised" hide-gt-sm>
           Close Sidenav Left
         </md-button>
-        <p hide show-gt-sm>
-          This sidenav is locked open on your device.
-        </p>
+
       </md-content>
     </md-sidenav>
 
