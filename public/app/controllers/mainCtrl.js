@@ -2,7 +2,7 @@ angular.module('mainCtrl', [])
 
 .controller('mainController', function(
 	$rootScope,
-	$location,
+	$state,
 	Auth,
 	$mdUtil,
 	$mdSidenav,
@@ -14,7 +14,7 @@ angular.module('mainCtrl', [])
 	vm.loggedIn = Auth.isLoggedIn();
 
 	// check to see if a user is logged in on every request
-	$rootScope.$on('$routeChangeStart', function() {
+	$rootScope.$on('$stateChangeStart', function() {
 		vm.loggedIn = Auth.isLoggedIn();
 
 		// get user information on page load
@@ -37,7 +37,7 @@ angular.module('mainCtrl', [])
 
 				// if a user successfully logs in, redirect to users page
 				if (data.success)
-					$location.path('/users');
+					$state.go('users');
 				else
 					vm.error = data.message;
 
@@ -49,7 +49,7 @@ angular.module('mainCtrl', [])
 		Auth.logout();
 		vm.user = '';
 
-		$location.path('/login');
+		$state.go('login');
 	};
 
 	vm.createSample = function() {

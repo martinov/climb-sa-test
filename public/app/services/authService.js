@@ -34,10 +34,10 @@ angular.module('authService', [])
 	// check if a user is logged in
 	// checks if there is a local token
 	authFactory.isLoggedIn = function() {
-		if (AuthToken.getToken()) 
+		if (AuthToken.getToken())
 			return true;
 		else
-			return false;	
+			return false;
 	};
 
 	// get the logged in user
@@ -45,7 +45,7 @@ angular.module('authService', [])
 		if (AuthToken.getToken())
 			return $http.get('/api/me', { cache: true });
 		else
-			return $q.reject({ message: 'User has no token.' });		
+			return $q.reject({ message: 'User has no token.' });
 	};
 
 	authFactory.createSampleUser = function() {
@@ -87,7 +87,7 @@ angular.module('authService', [])
 // ===================================================
 // application configuration to integrate token into requests
 // ===================================================
-.factory('AuthInterceptor', function($q, $location, AuthToken) {
+.factory('AuthInterceptor', function($q, $injector, AuthToken) {
 
 	var interceptorFactory = {};
 
@@ -98,9 +98,9 @@ angular.module('authService', [])
 		var token = AuthToken.getToken();
 
 		// if the token exists, add it to the header as x-access-token
-		if (token) 
+		if (token)
 			config.headers['x-access-token'] = token;
-		
+
 		return config;
 	};
 
@@ -110,7 +110,8 @@ angular.module('authService', [])
 		// if our server returns a 403 forbidden response
 		if (response.status == 403) {
 			AuthToken.setToken();
-			$location.path('/login');
+			// http://stackoverflow.com/questions/20230691/injecting-state-ui-router-into-http-interceptor-causes-circular-dependency
+			$injector.get('$state').transitionTo('login');
 		}
 
 		// return the errors from the server as a promise
@@ -118,5 +119,5 @@ angular.module('authService', [])
 	};
 
 	return interceptorFactory;
-	
+
 });
