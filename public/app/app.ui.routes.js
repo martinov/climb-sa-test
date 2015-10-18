@@ -23,7 +23,7 @@ angular.module('app.ui.routes', ['ui.router'])
 		.state('result', {
 			url: '/result',
 			templateUrl: 'app/views/pages/result.html',
-			controller: 'PolarAreaCtrl'
+			controller: 'TestResultCtrl'
 		})
 
 		// login page

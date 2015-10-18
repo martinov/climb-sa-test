@@ -9,7 +9,7 @@ angular
 		'userCtrl',
 		'userService',
 		'questionCtrl',
-		'chart.js'
+		'resultCtrl'
 	])
 
 	// application configuration to integrate token into requests
@@ -27,23 +27,4 @@ angular
       .primaryPalette('lime')
       .accentPalette('amber');
 
-	})
-	.controller("PolarAreaCtrl", function ($scope) {
-		// see http://jtblin.github.io/angular-chart.js
-		$scope.labels = [
-			"Mental",
-			"Technique and tactics",
-			"Physical"
-		];
-		$scope.data = [34, 35, 33 ];
-		$scope.radarData = [
-			[34, 35, 33],
-			[29, 25, 23],
-			[13, 28, 14]
-		];
-		$scope.radarSeries = [
-			'2015-08-22',
-			'2015-02-15',
-			'2014-06-25'
-		]
 	});
