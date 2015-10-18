@@ -2,23 +2,24 @@
 <md-card>
 
   <md-card-content>
-    <h5>Question {{ test.currentNum }} of {{ test.totalNum }}</h5>
-    <hr>
+    <h5 hide-sm>Question {{ test.currentNum }} of {{ test.totalNum }}</h5>
+    <hr hide-sm>
     <h2 class="md-title">{{ test.question.question }}</h2>
 
-      <md-radio-group ng-model="test.question.answer">
-        <md-radio-button ng-repeat="a in test.answers" value="{{ a.value }}"
-          class="md-primary">{{ a.label }}</md-radio-button>
-      </md-radio-group>
+    <md-radio-group ng-model="test.question.answer">
+      <md-radio-button ng-repeat="a in test.answers" value="{{ a.value }}"
+        class="md-primary">{{ a.label }}</md-radio-button>
+    </md-radio-group>
 
   </md-card-content>
 
   <div layout="row" class="md-actions md-padding" layout-align="space-between center">
     <md-button class="md-raised" ng-click="test.prevQuestion()" type="button"
-      ng-hide="test.currentNum == 1">Previous</md-button>
-    <p>Selected: <span class="radioValue">{{ test.question.answer }}</span></p>
+      ng-disabled="test.currentNum == 1">Previous</md-button>
+    <div hide-gt-sm>{{ test.currentNum }} / {{ test.totalNum }}</div>
     <md-button class="md-raised md-primary" ng-click="test.nextQuestion()"
-      type="button" ng-hide="test.currentNum == test.totalNum">Next</md-button>
+      ng-disabled="!test.question.answer" type="button"
+      ng-hide="test.currentNum == test.totalNum">Next</md-button>
     <md-button class="md-raised md-accent" type="submit"
       ng-show="test.currentNum == test.totalNum">Submit</md-button>
   </div>
