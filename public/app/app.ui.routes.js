@@ -45,15 +45,15 @@ angular.module('app.ui.routes', ['ui.router'])
 		// form to create a new user
 		// same view as edit page
 		.state('users.create', {
-			url: '/users/create',
+			url: '/create',
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userCreateController',
 			controllerAs: 'user'
 		})
 
 		// page to edit a user
-		.state('users-edit', {
-			url: '/users/:user_id',
+		.state('users.edit', {
+			url: '/:user_id',
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userEditController',
 			controllerAs: 'user'
