@@ -16,14 +16,14 @@
         </md-input-container>
       </div>
 
-			<div class="alert alert-danger" ng-if="login.error">
+			<div class="md-warn" ng-if="login.error">
 				{{ login.error }}
 			</div>
 
-			<md-button type="submit" class="md-primary md-raised" aria-label="Login" ng-disabled="login.processing">
-				<span ng-if="!login.processing">Login</span>
-				<span ng-if="login.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
-			</md-button>
+			<md-button type="submit" class="md-primary md-raised" aria-label="Login"
+				ng-disabled="login.processing">Login</md-button>
+			<md-progress-circular ng-if="login.processing" md-mode="indeterminate">
+			</md-progress-circular>
 
 		</form>
 	</div>
@@ -32,9 +32,10 @@
 
 	<div class="alert alert-info md-whiteframe-2dp md-padding">
 		<p>Test Info</p>
-		<p><strong>Username</strong>: chris</p>
+		<p><strong>Username</strong>: martin</p>
 		<p><strong>Password</strong>: supersecret</p>
-		<p><a href="#" ng-click="login.createSample()" class="btn btn-sm btn-primary">Create Sample User</a></p>
+		<md-button href="#" ng-click="login.createSample()"
+				class="md-raised md-primary">Create Sample User</md-button>
 	</div>
 
 </div>

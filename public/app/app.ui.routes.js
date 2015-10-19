@@ -42,18 +42,17 @@ angular.module('app.ui.routes', ['ui.router'])
 			controllerAs: 'user'
 		})
 
-		// form to create a new user
-		// same view as edit page
-		.state('users.create', {
-			url: '/create',
+		// form to create a new user - same view as edit page
+		.state('users-create', {
+			url: '/users/create',
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userCreateController',
 			controllerAs: 'user'
 		})
 
 		// page to edit a user
-		.state('users.edit', {
-			url: '/:user_id',
+		.state('users-edit', {
+			url: '/users/:userId',
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userEditController',
 			controllerAs: 'user'

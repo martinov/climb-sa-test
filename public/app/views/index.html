@@ -24,14 +24,14 @@
 				<md-icon md-svg-icon="menu" ></md-icon>
 		  </md-button>
 		</div>
-	  <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Climbing Performance Assessment</h1>
+	  <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Climbing Performance Test</h1>
 	</md-toolbar>
 
 	<section layout="row" flex>
 
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" ng-cloak
 			md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-      <md-content layout-padding ng-controller="LeftCtrl">
+      <md-content layout-padding ng-controller="LeftCtrl" md-swipe-left="close()">
 
 				<div ng-if="main.loggedIn" class="md-padding md-whiteframe-2dp">
 					Hello {{ main.user.name }}!
