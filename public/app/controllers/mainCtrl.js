@@ -50,6 +50,7 @@ angular.module('mainCtrl', [])
 		vm.user = '';
 
 		$state.go('login');
+		$mdSidenav('left').close();
 	};
 
 	vm.createSample = function() {

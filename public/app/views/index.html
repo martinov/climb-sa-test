@@ -24,12 +24,12 @@
 				<md-icon md-svg-icon="menu" ></md-icon>
 		  </md-button>
 		</div>
-	  <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Climbing Self-Assessment</h1>
+	  <h1 layout="column" layout-align="center center" class="md-toolbar-tools">Climbing Performance Assessment</h1>
 	</md-toolbar>
 
 	<section layout="row" flex>
 
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" ng-cloak
 			md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
       <md-content layout-padding ng-controller="LeftCtrl">
 
@@ -42,22 +42,34 @@
 
 				<md-list>
   				<md-list-item>
-						<md-button ui-sref="home"><md-icon md-svg-icon="home"></md-icon> Instructions</md-button>
+						<md-button ui-sref="home" ng-click="close()">
+							<md-icon md-svg-icon="home"></md-icon> Instructions
+						</md-button>
 					</md-list-item>
 					<md-list-item>
-						<md-button ui-sref="test"><md-icon md-svg-icon="assignment"></md-icon> Take the test</md-button>
+						<md-button ui-sref="test" ng-click="close()">
+							<md-icon md-svg-icon="assignment"></md-icon> Take the test
+						</md-button>
 					</md-list-item>
 			    <md-list-item>
-						<md-button ui-sref="result"><md-icon md-svg-icon="assessment"></md-icon> Results</md-button>
+						<md-button ui-sref="result" ng-click="close()">
+							<md-icon md-svg-icon="assessment"></md-icon> Results
+						</md-button>
 					</md-list-item>
-					<md-list-item>
-						<md-button ui-sref="users"><md-icon md-svg-icon="account-box"></md-icon> Users</md-button>
+					<md-list-item ng-if="main.loggedIn">
+						<md-button ui-sref="users" ng-click="close()">
+							<md-icon md-svg-icon="account-box"></md-icon> Users
+						</md-button>
 					</md-list-item>
 		      <md-list-item ng-if="!main.loggedIn">
-						<md-button ui-sref="login"><md-icon md-svg-icon="account-box"></md-icon> Login</md-button>
+						<md-button ui-sref="login" ng-click="close()">
+							<md-icon md-svg-icon="account-box"></md-icon> Login
+						</md-button>
 					</md-list-item>
 		      <md-list-item ng-if="main.loggedIn">
-						<md-button href="#" ng-click="main.doLogout()"><md-icon md-svg-icon="close"></md-icon> Logout</md-button>
+						<md-button href="#" ng-click="main.doLogout()">
+							<md-icon md-svg-icon="close"></md-icon> Logout
+						</md-button>
 					</md-list-item>
 		    </md-list>
 
