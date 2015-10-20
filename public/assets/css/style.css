@@ -1,3 +1,8 @@
+.csat-text-over-img p span {
+	font-style: oblique;
+	font-weight: bold;
+}
+
 .csat-progress-box {
 	width: 165px;
 }

@@ -1,8 +1,11 @@
 angular.module('app.ui.routes', ['ui.router'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+	$locationProvider.html5Mode(true);
 
 	$urlRouterProvider.otherwise('/home');
+
 	$stateProvider
 
 		.state('home', {

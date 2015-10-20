@@ -56,7 +56,7 @@
 							<md-icon md-svg-icon="assessment"></md-icon> Results
 						</md-button>
 					</md-list-item>
-					<md-list-item ng-if="main.loggedIn">
+					<md-list-item ng-if="main.loggedIn && main.isAdmin">
 						<md-button ui-sref="users" ng-click="close()">
 							<md-icon md-svg-icon="account-box"></md-icon> Users
 						</md-button>
