@@ -15,14 +15,14 @@ module.exports = function(app, express) {
 	apiRouter.post('/sample', function(req, res) {
 
 		// look for the user named chris
-		User.findOne({ 'username': 'chris' }, function(err, user) {
+		User.findOne({ 'username': 'martin' }, function(err, user) {
 
 			// if there is no chris user, create one
 			if (!user) {
 				var sampleUser = new User();
 
-				sampleUser.name = 'Chris';
-				sampleUser.username = 'chris';
+				sampleUser.name = 'Martin';
+				sampleUser.username = 'martin';
 				sampleUser.password = 'supersecret';
 
 				sampleUser.save();
