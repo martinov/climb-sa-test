@@ -1,23 +1,24 @@
 <md-header>
 	<h2>Users</h2>
-	<md-button ui-sref="users-create" class="md-primary md-raised">New User</md-button>
 </md-header>
+<md-button ui-sref="users-create" class="md-primary md-raised">New User</md-button>
 
-<div style="width: 100%;" layout="row" layout-align="center center">
-	<div class="md-padding md-whiteframe-2dp csat-progress-box"
-		layout="column" layout-align="center center" ng-show="user.processing">
+<div class="csat-progress-box md-padding" layout="row"
+	layout-align="center center" ng-show="user.processing">
+	<div class="csat-progress-box-inner md-padding md-whiteframe-2dp"
+		layout="column" layout-align="center center">
 		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 		<p>Loading Users...</p>
 	</div>
 </div>
 
-<table class="md-padding md-whiteframe-2dp" ng-show="user.users" ng-show="!user.processing">
+<table ng-show="user.users" ng-show="!user.processing" layout-fill flex>
 	<thead>
 		<tr>
-			<th>_id</th>
-			<th>Name</th>
-			<th>Username</th>
-			<th></th>
+			<th class="md-whiteframe-1dp">_id</th>
+			<th class="md-whiteframe-1dp">Name</th>
+			<th class="md-whiteframe-1dp">Username</th>
+			<th class="md-whiteframe-1dp">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,7 +28,8 @@
 			<td>{{ person.username }}</td>
 			<td class="col-sm-2">
 				<md-button ui-sref="users-edit({userId: person._id})">Edit</md-button>
-				<md-button href="#" ng-click="user.deleteUser(person._id)" class="md-warn">Delete</md-button>
+				<md-button href="#" ng-click="user.deleteUser($event, person._id)"
+					class="md-warn">Delete</md-button>
 			</td>
 		</tr>
 	</tbody>

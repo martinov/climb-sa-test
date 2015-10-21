@@ -8,8 +8,9 @@
 	<base href="/">
 
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
 	<link rel="stylesheet" href="/assets/libs/angular-material/angular-material.css">
+	<link rel="stylesheet" href="/assets/libs/angular-chart.js/dist/angular-chart.css">
 
 	<!-- CSS  -->
 	<!-- load animate.css from CDN and custom CSS -->
@@ -35,9 +36,9 @@
 
 				<div ng-if="main.loggedIn" class="md-padding md-whiteframe-2dp">
 					Hello {{ main.user.name }}!
-					<p hide show-gt-sm>
+					<!--p hide show-gt-sm>
 	          This sidenav is locked open on your device.
-	        </p>
+	        </p-->
 			  </div>
 
 				<md-list>
@@ -80,7 +81,9 @@
       </md-content>
     </md-sidenav>
 
-		<md-content flex layout="column" layout-align="top center" layout-padding ui-view></md-content>
+		<div layout="column" layout-padding id="main-content">
+			<md-content ui-view></md-content>
+		</div>
 
 	</section>
 

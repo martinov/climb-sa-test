@@ -1,6 +1,6 @@
 angular.module('userCtrl', ['userService'])
 
-.controller('userController', function(User) {
+.controller('userController', function(User, $mdDialog) {
 
 	var vm = this;
 
@@ -19,22 +19,34 @@ angular.module('userCtrl', ['userService'])
 		});
 
 	// function to delete a user
-	vm.deleteUser = function(id) {
-		vm.processing = true;
+	vm.deleteUser = function(ev, id) {
+    // Appending dialog to document.body
+    var confirm = $mdDialog.confirm()
+          .title('Would you like to delete this user?')
+          .content('They won\'t be able to access the system anymore.')
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('Yes!')
+          .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
+			vm.processing = true;
 
-		User.delete(id)
-			.success(function(data) {
+			User.delete(id)
+				.success(function(data) {
 
-				// get all users to update the table
-				// you can also set up your api
-				// to return the list of users with the delete call
-				User.all()
-					.success(function(data) {
-						vm.processing = false;
-						vm.users = data;
-					});
+					// get all users to update the table
+					// you can also set up your api
+					// to return the list of users with the delete call
+					User.all()
+						.success(function(data) {
+							vm.processing = false;
+							vm.users = data;
+						});
 
-			});
+				});
+    }, function() {
+      //$scope.status = 'You decided to not delete the user.';
+    });
 	};
 
 })

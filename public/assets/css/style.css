@@ -1,18 +1,21 @@
+#main-content {
+	width: 100%;
+}
+
+#sa-form md-card-content h5 {
+	margin: 0px;
+}
+
 .csat-text-over-img p span {
 	font-style: oblique;
 	font-weight: bold;
 }
 
 .csat-progress-box {
-	width: 165px;
-}
-
-#sa-form {
 	width: 100%;
 }
-
-#sa-form md-card-content h5 {
-	margin: 0px;
+.csat-progress-box-inner {
+	width: 165px;
 }
 
 /* NGANIMATE
