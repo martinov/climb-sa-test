@@ -1,5 +1,5 @@
 /**
- * Climbing Self-Assessment Test
+ * Climbing Performance Assessment
  */
 var express = require('express'),
     app = express(),
