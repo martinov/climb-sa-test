@@ -1,8 +1,8 @@
-var bodyParser = require('body-parser'); 	// get body-parser
-var User       = require('../models/user');
-var Question   = require('../models/question');
-var jwt        = require('jsonwebtoken');
-var config     = require('../../config');
+var jwt = require('jsonwebtoken'),
+    config = require('../../config'),
+    User = require('../models/user'),
+    Question = require('../models/question')
+    TestResult = require('../models/test-result');
 
 // super secret for creating tokens
 var superSecret = config.secret;
@@ -145,7 +145,7 @@ module.exports = function(app, express) {
 				if (err) {
 					// duplicate entry
 					if (err.code == 11000)
-						return res.json({ success: false, message: 'A user with that username already exists. '});
+						return res.json({ success: false, message: 'A user with that username already exists.' });
 					else
 						return res.send(err);
 				}
@@ -229,6 +229,40 @@ module.exports = function(app, express) {
 			Question.find({}, function(err, questions) {
 				if (err) res.send(err);
 				res.json(questions);
+			});
+		});
+
+	// on routes that end in /test-result
+	// ----------------------------------------------------
+	apiRouter.route('/test-results')
+
+		// create a test result (accessed at POST http://localhost:8080/test-results)
+		.post(function(req, res) {
+			// create a new instance of the TestResult model
+			var testResult = new TestResult();
+			testResult.user_id = req.body.user_id;
+			testResult.answers = req.body.answers;
+
+			testResult.save(function(err) {
+				if (err) {
+					// duplicate entry
+					if (err.code == 11000)
+						return res.json({ success: false, message: 'Creation of duplicate entry prevented.' });
+					else
+						return res.send(err);
+				}
+
+				// return a message
+				res.json({ message: 'Test Result created!', id: testResult._id });
+			});
+		})
+
+		// get all the test results (accessed at GET http://localhost:8080/api/test-results)
+		.get(function(req, res) {
+
+			TestResult.find({}, function(err, testResults) {
+				if (err) res.send(err);
+				res.json(testResults);
 			});
 		});
 

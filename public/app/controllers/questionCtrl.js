@@ -23,19 +23,6 @@ angular.module('questionCtrl', ['questionService'])
       vm.question = vm.questions[vm.currentNum - 1];
 		});
 
-  /*
-  vm.questions = [{
-    num: 13,
-    title: 'I make excuses for why I might fail on a route before I even begin to climb.',
-    answer: ''
-  }, {
-    num: 14,
-    title: 'I grab quick draws, the rope, or other gear instead of risking a fall trying a hard move of which I am unsure.',
-    answer: ''
-  }];
-  $log.debug(vm.questions);
-  */
-
   vm.answers = [
     { value: 0, label: 'almost always' },
     { value: 1, label: 'often' },
