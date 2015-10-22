@@ -24,6 +24,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "file-stream-rotator": "0.0.6",
     "jsonwebtoken": "^5.4.0",
     "mongoose": "^4.1.10",
     "morgan": "^1.6.1"
