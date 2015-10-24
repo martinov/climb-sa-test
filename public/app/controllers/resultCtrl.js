@@ -1,6 +1,6 @@
-angular.module('resultCtrl', ['chart.js'])
+angular.module('resultCtrl', ['testResultService', 'chart.js'])
 
-.controller("TestResultCtrl", function($scope, $log) {
+.controller("TestResultCtrl", function($scope, TestResults) {
   // see http://jtblin.github.io/angular-chart.js
   //$log.debug(Chart.defaults.global.colours);
   $scope.labels = [

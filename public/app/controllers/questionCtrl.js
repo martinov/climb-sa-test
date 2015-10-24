@@ -1,6 +1,6 @@
-angular.module('questionCtrl', ['questionService'])
+angular.module('questionCtrl', ['questionService', 'testResultService'])
 
-.controller('questionController', function(TestQuestions, $log) {
+.controller('questionController', function(TestQuestions, TestResults, $log) {
   var vm = this;
   vm.currentNum = 1;
   vm.totalNum = 0;
@@ -33,7 +33,20 @@ angular.module('questionCtrl', ['questionService'])
   ];
 
   vm.submit = function() {
-    alert('submit');
+    var testResult = {
+      user_id: '56253591eeb6ea6831c960dc',
+      answers: [{
+        question_id: vm.question._id,
+        answer: vm.question.answer,
+        category:	vm.question.category
+      }],
+      result: {
+        mental: 42,
+        tech: 24,
+        physical: 33
+      }
+    };
+    TestResults.create(testResult);
   };
 
   vm.nextQuestion = function() {
