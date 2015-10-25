@@ -11,6 +11,6 @@ COPY package.json /usr/src/app/
 RUN npm install -g bower
 RUN npm install
 COPY . /usr/src/app
-RUN bower install
+RUN bower install --allow-root
 CMD [ "npm", "start" ]
 EXPOSE 8080
