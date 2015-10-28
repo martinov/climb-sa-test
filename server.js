@@ -34,6 +34,22 @@ app.use(express.static(__dirname + '/public'));
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
+// route to collect email subscriptions
+app.post('/climbder-signup', function(req, res) {
+  if (req.body.subscribe_email.length > 0) {
+    var ClimbderSignup = require('./app/models/climbder-signup');
+    var signup = new ClimbderSignup();
+    signup.email = req.body.subscribe_email;
+
+    signup.save(function(err) {
+      if (err)
+        return res.send(err);
+
+      res.json({ message: 'Email saved!' });
+    });
+  }
+});
+
 // Main catchall route
 app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
