@@ -38,10 +38,11 @@ angular.module('mainCtrl', [])
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.success(function(data) {
 				vm.processing = false;
+				var destination = vm.loginData.username == 'martin' ? 'users' : 'test';
 
 				// if a user successfully logs in, redirect to users page
 				if (data.success)
-					$state.go('users');
+					$state.go(destination);
 				else
 					vm.error = data.message;
 
