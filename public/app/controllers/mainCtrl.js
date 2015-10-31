@@ -22,6 +22,7 @@ angular.module('mainCtrl', [])
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
+				Auth.setUser(data.data);
 				if (vm.user.username == 'martin') {
 					vm.isAdmin = true;
 				}

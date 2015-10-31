@@ -68,6 +68,7 @@ module.exports = function(app, express) {
 	        // if user is found and password is right
 	        // create a token
 	        var token = jwt.sign({
+            _id: user._id,
 	        	name: user.name,
 	        	username: user.username
 	        }, superSecret, {

@@ -1,6 +1,6 @@
 angular.module('questionCtrl', ['questionService', 'testResultService'])
 
-.controller('questionController', function(TestQuestions, TestResults, $log) {
+.controller('questionController', function(TestQuestions, TestResults, Auth) {
   var vm = this;
   vm.currentNum = 1;
   vm.totalNum = 0;
@@ -18,7 +18,6 @@ angular.module('questionCtrl', ['questionService', 'testResultService'])
 
 			// bind the questions that come back to vm.questions
 			vm.questions = data;
-      //$log.debug(data);
       vm.totalNum = data.length;
       vm.question = vm.questions[vm.currentNum - 1];
 		});
@@ -34,18 +33,18 @@ angular.module('questionCtrl', ['questionService', 'testResultService'])
 
   vm.submit = function() {
     var testResult = {
-      user_id: '56253591eeb6ea6831c960dc',
-      answers: [{
-        question_id: vm.question._id,
-        answer: vm.question.answer,
-        category:	vm.question.category
-      }],
-      result: {
-        mental: 42,
-        tech: 24,
-        physical: 33
-      }
+      user_id: Auth.getUserId(),
+      answers: []
     };
+
+    // Loop the questions to fill in answers in the testResult document.
+    for (var i = 0; i < vm.totalNum; i++) {
+      testResult.answers[i] = {
+        question_id: vm.questions[i]._id,
+        answer: vm.questions[i].answer,
+        category: vm.questions[i].category
+      };
+    }
     TestResults.create(testResult);
   };
 
