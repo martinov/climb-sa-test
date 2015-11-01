@@ -1,9 +1,9 @@
 // load the plugins
-var gulp      = require('gulp');
-var less      = require('gulp-less');
-var minifyCSS = require('gulp-minify-css');
-var rename    = require('gulp-rename');
-var jshint    = require('gulp-jshint');
+var gulp       = require('gulp');
+//var less       = require('gulp-less');
+//var minifyCSS  = require('gulp-minify-css');
+var rename     = require('gulp-rename');
+var jshint     = require('gulp-jshint');
 var concat     = require('gulp-concat');
 var uglify     = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
@@ -49,7 +49,7 @@ gulp.task('angular', function() {
 
 gulp.task('watch', function() {
   // watch the less file and run the css task
-  gulp.watch('public/assets/css/style.less', ['css']);
+  //gulp.watch('public/assets/css/style.less', ['css']);
 
   // watch js files and run lint and run js and angular tasks
   gulp.watch(['server.js', 'public/app/*.js', 'public/app/**/*.js'], ['js', 'angular']);
@@ -58,7 +58,8 @@ gulp.task('watch', function() {
 gulp.task('nodemon', function() {
   nodemon({
     script: 'server.js',
-    ext: 'js less html'
+    //ext: 'js less html'
+    ext: 'js css html'
   })
     .on('start', ['watch'])
     .on('change', ['watch'])
