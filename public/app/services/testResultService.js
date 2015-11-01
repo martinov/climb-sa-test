@@ -30,6 +30,15 @@ angular.module('testResultService', [])
 		return $http.delete('/api/test-results/' + id);
 	};
 
+	// get a single test result (latest) for a specific user
+	testResultsFactory.latest = function(user_id) {
+		return $http({
+			url: '/api/test-results/',
+			method: 'GET',
+			params: { user_id: user_id }
+		});
+	};
+
 	// return our entire testResultsFactory object
 	return testResultsFactory;
 

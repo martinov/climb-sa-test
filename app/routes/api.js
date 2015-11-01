@@ -260,11 +260,14 @@ module.exports = function(app, express) {
 
 		// get all the test results (accessed at GET http://localhost:8080/api/test-results)
 		.get(function(req, res) {
-
-			TestResult.find({}, function(err, testResults) {
-				if (err) res.send(err);
-				res.json(testResults);
-			});
+      var resultCb = function(err, testResults) {
+        if (err) res.send(err);
+        res.json(testResults);
+      };
+      if (req.query.user_id)
+        TestResult.findOne({ user_id: req.query.user_id }, resultCb);
+      else
+        TestResult.find({}, resultCb);
 		});
 
 	return apiRouter;
