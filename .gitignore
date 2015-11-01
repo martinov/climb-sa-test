@@ -31,3 +31,6 @@ config.js
 
 # Managed by Bower
 public/assets/libs
+
+# Managed by Gulp
+public/dist

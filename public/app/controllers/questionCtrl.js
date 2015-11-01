@@ -1,6 +1,6 @@
 angular.module('questionCtrl', ['questionService', 'testResultService'])
 
-.controller('questionController', function(TestQuestions, TestResults, Auth) {
+.controller('questionController', function(TestQuestions, TestResults, Auth, $state) {
   var vm = this;
   vm.currentNum = 1;
   vm.totalNum = 0;
@@ -32,6 +32,8 @@ angular.module('questionCtrl', ['questionService', 'testResultService'])
   ];
 
   vm.submit = function() {
+    vm.processing = true;
+
     var testResult = {
       user_id: Auth.getUserId(),
       answers: []
@@ -45,7 +47,12 @@ angular.module('questionCtrl', ['questionService', 'testResultService'])
         category: vm.questions[i].category
       };
     }
-    TestResults.create(testResult);
+
+    TestResults.create(testResult)
+      .success(function(data) {
+        vm.processing = false;
+        $state.go('result');
+      });
   };
 
   vm.nextQuestion = function() {

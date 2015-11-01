@@ -24,16 +24,15 @@ angular.module('userCtrl', ['userService'])
     var confirm = $mdDialog.confirm()
           .title('Would you like to delete this user?')
           .content('They won\'t be able to access the system anymore.')
-          .ariaLabel('Lucky day')
+          .ariaLabel('Would you like to delete this user?')
           .targetEvent(ev)
-          .ok('Yes!')
-          .cancel('Cancel');
+          .ok('Yes')
+          .cancel('No');
     $mdDialog.show(confirm).then(function() {
 			vm.processing = true;
 
 			User.delete(id)
 				.success(function(data) {
-
 					// get all users to update the table
 					// you can also set up your api
 					// to return the list of users with the delete call
@@ -42,7 +41,6 @@ angular.module('userCtrl', ['userService'])
 							vm.processing = false;
 							vm.users = data;
 						});
-
 				});
     }, function() {
       //$scope.status = 'You decided to not delete the user.';

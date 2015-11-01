@@ -56,12 +56,12 @@ angular.module('authService', [])
 	};
 
 	authFactory.getUserId = function() {
-		return authUser._id != undefined ? authUser._id : null;
-	}
+		return authUser._id !== undefined ? authUser._id : null;
+	};
 
 	authFactory.setUser = function(u) {
 		authUser = u;
-	}
+	};
 
 	// return auth factory object
 	return authFactory;
