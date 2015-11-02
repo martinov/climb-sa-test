@@ -1,12 +1,18 @@
 # Climbing Performance Assessment
 
-A basic MEAN app around [this test](http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test).
+A basic MEAN app around a [Climbing Self-assessment test](http://www.edenrockclimbing.com/blog/posts/climbing-performance-self-assessment-test).
 
 #### Use regularly to improve your climbing skills.
 
 ## climb-sa-test
 
-REST API built with Node.js for backend and [Angular Material](https://material.angularjs.org) for frontend.
+Built with [Node.js](https://nodejs.org) and [Angular Material](https://material.angularjs.org).
+
+### Tests
+
+Run with `npm test`.
+
+### Random notes
 
     $ docker run -it --link mymongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/climb-sa-test"'
 
