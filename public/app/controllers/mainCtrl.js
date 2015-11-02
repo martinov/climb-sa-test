@@ -71,10 +71,12 @@ angular.module('mainCtrl', [])
   function buildToggler(navID) {
     var debounceFn = $mdUtil.debounce(function() {
 			$mdSidenav(navID)
-        .toggle()
+        .toggle();
+				/*
 				.then(function () {
           $log.debug("toggle " + navID + " is done");
         });
+				*/
     }, 200);
     return debounceFn;
   }
