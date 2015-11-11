@@ -14,6 +14,8 @@ Run with `npm test`.
 
 ### Random notes
 
+    $ docker run --name mymongo -v /root/docker/mongo:/data/db -d mongo
+
     $ docker run -it --link mymongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/climb-sa-test"'
 
     $ mongoexport -h $MONGO_PORT_27017_TCP_ADDR -d climb-sa-test -c questions -o questions.json
