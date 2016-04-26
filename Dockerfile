@@ -4,7 +4,7 @@
 # docker ps -> docker logs
 # docker inspect to see the IP
 
-FROM node:4.2.1
+FROM node:5
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -13,7 +13,7 @@ COPY package.json /usr/src/app/
 RUN npm install -g bower
 RUN npm install
 COPY . /usr/src/app
-# Do the following only if needed?
 RUN bower install --allow-root
-CMD [ "npm", "start" ]
+
 EXPOSE 8080
+CMD [ "npm", "start" ]

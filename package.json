@@ -4,7 +4,7 @@
   "description": "Climbing Self-Assessment Test",
   "main": "server.js",
   "scripts": {
-    "postinstall": "bower update",
+    "postinstall": "bower update --allow-root",
     "test": "mocha --reporter spec"
   },
   "repository": {
