@@ -2,6 +2,7 @@
  * Climbing Performance Assessment
  */
 var express = require('express'),
+    cors = require('cors')
     app = express(),
     config = require('./config'),
     bodyParser = require('body-parser'),
@@ -12,6 +13,11 @@ var express = require('express'),
 // use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+var corsOptions = {
+  origin: 'http://localhost:8080'
+};
+app.use(cors(corsOptions));
 
 // configure our app to handle CORS requests
 app.use(function(req, res, next) {
