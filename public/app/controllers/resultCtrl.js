@@ -1,10 +1,11 @@
 angular.module('resultCtrl', ['testResultService', 'chart.js'])
 
-.controller("TestResultCtrl", function(TestResults, Auth) {
+.controller("TestResultCtrl", function(TestResults, Auth, $log) {
   var vm = this;
   vm.processing = true;
   vm.polarAreaLabels = [];
   vm.polarAreaData = [];
+  vm.weakPoints = {};
 
   // see http://jtblin.github.io/angular-chart.js
 
@@ -15,8 +16,10 @@ angular.module('resultCtrl', ['testResultService', 'chart.js'])
       vm.processing = false;
       for (var catName in data.result) {
         vm.polarAreaLabels.push(catName);
+        vm.weakPoints[catName] = [];
         vm.polarAreaData.push(data.result[catName]);
       }
+      $log.debug(vm.weakPoints);
     });
 
   /*

@@ -1,8 +1,9 @@
 var jwt = require('jsonwebtoken'),
     config = require('../../config'),
     User = require('../models/user'),
-    Question = require('../models/question')
-    TestResult = require('../models/test-result');
+    Question = require('../models/question'),
+    TestResult = require('../models/test-result'),
+    _ = require('underscore');
 
 // super secret for creating tokens
 var superSecret = config.secret;
@@ -260,14 +261,29 @@ module.exports = function(app, express) {
 
 		// get all the test results (accessed at GET http://localhost:8080/api/test-results)
 		.get(function(req, res) {
-      var resultCb = function(err, testResults) {
-        if (err) res.send(err);
-        res.json(testResults);
-      };
       if (req.query.user_id)
-        TestResult.findOne({ user_id: req.query.user_id }, resultCb);
+        TestResult.findOne({ user_id: req.query.user_id })
+          .lean().exec(function(err, data) {
+            var len = data.answers.length;
+            var counter = 0;
+
+            _.each(data.answers, function(a) {
+              Question.findById(a.question_id, function(err, q) {
+                if (a.answer < 4)
+                  a.question = q.question;
+
+                if (++counter == len) {
+                  console.log(data);
+                  res.json(data);
+                }
+              });
+            });
+          });
       else
-        TestResult.find({}, resultCb);
+        TestResult.find({}, function(err, data) {
+          if (err) res.send(err);
+          res.json(data);
+        });
 		});
 
 	return apiRouter;

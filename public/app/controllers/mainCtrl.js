@@ -46,7 +46,6 @@ angular.module('mainCtrl', [])
 					$state.go(destination);
 				else
 					vm.error = data.message;
-
 			});
 	};
 
