@@ -1,13 +1,14 @@
-var jwt = require('jsonwebtoken'),
-    config = require('../../config'),
-    User = require('../models/user'),
-    Question = require('../models/question')
-    TestResult = require('../models/test-result');
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const config = require('../../config');
+const User = require('../models/user');
+const Question = require('../models/question');
+const TestResult = require('../models/test-result');
 
 // super secret for creating tokens
 var superSecret = config.secret;
 
-module.exports = function(app, express) {
+module.exports = function(app) {
 
 	var apiRouter = express.Router();
 

@@ -2,12 +2,12 @@
  * Climbing Performance Assessment
  */
 var express = require('express'),
-    cors = require('cors')
-    app = express(),
-    config = require('./config'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    path = require('path');
+  cors = require('cors');
+(app = express()),
+  (config = require('./config')),
+  (bodyParser = require('body-parser')),
+  (mongoose = require('mongoose')),
+  (path = require('path'));
 
 // APP CONFIGURATION
 // use body parser so we can grab information from POST requests
@@ -21,10 +21,13 @@ app.use(cors(corsOptions));
 
 // configure our app to handle CORS requests
 app.use(function(req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-	next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With,content-type, Authorization'
+  );
+  next();
 });
 
 // log all requests to the console if config.env is dev
@@ -37,7 +40,7 @@ mongoose.connect(config.database);
 app.use(express.static(__dirname + '/public'));
 
 // API ROUTES
-var apiRoutes = require('./app/routes/api')(app, express);
+var apiRoutes = require('./app/routes/api')(app);
 app.use('/api', apiRoutes);
 
 // route to collect email subscriptions
@@ -48,8 +51,7 @@ app.post('/climbder-signup', function(req, res) {
     signup.email = req.body.subscribe_email;
 
     signup.save(function(err) {
-      if (err)
-        return res.send(err);
+      if (err) return res.send(err);
 
       res.json({ message: 'Email saved!' });
     });
@@ -58,9 +60,10 @@ app.post('/climbder-signup', function(req, res) {
 
 // Main catchall route
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
 // START THE SERVER
-app.listen(config.port);
-console.log('Magic happens on http://localhost:' + config.port);
+app.listen(config.port, () => {
+  console.log(`Magic happens on http://localhost:${config.port}`);
+});
